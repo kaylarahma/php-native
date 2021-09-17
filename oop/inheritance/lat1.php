@@ -15,10 +15,10 @@
                     <td>Nama Makhluk</td>
                     <td> : </td>
                     <td><select type="text" name="jenis" >
-                        <option value= 1 > Manusia</option>
-                        <option value= 2 > Malaikat</option>
-                        <option value= 3 > Jin</option>
-                        <option value= 4 > Setan</option>
+                        <option value= "Manusia" > Manusia</option>
+                        <option value= "Malaikat" > Malaikat</option>
+                        <option value= "Jin" > Jin</option>
+                        <option value= "Setan" > Setan</option>
                         </select></td>
                 </tr>
                 <tr>
@@ -45,9 +45,21 @@ if (isset($_POST['submit'])) {
     {
         public function tugas()
         {
-
+            if ($this->jenis == "Manusia") {
+                $tugas = "Beribadah Kepada Alloh";
+            } else if ($this->jenis == "Malaikat") {
+                $tugas = "Beribadah Kepada Alloh";
+            } else if ($this->jenis == "Jin") {
+                $tugas = "Ada yang beribadah, Ada yang mengganggu manusia";
+            } else {
+                $tugas = "Mengganggu Manusia Beribadah";
+            }
+            return $tugas;
         }
     }
+    $makhluk = new manusia($jenis);
+    echo "Jenis Makhluk : " . $makhluk->jenis . "<br>";
+    echo "Tugasnya : " . $makhluk->tugas();
 }
 ?>
     </fieldset>
