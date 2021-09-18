@@ -93,8 +93,8 @@ if (isset($_POST['submit'])) {
                 $diskon = $total * 0.15;
                 $hasil = $total - $diskon;
                 echo "Diskon <br>";
-                echo "Anda mendapat diskon 15% <br>";
-                echo "Yang harus dibayar : $hasil<br>";
+                echo "Anda mendapat diskon 15% : " . $diskon;
+                echo "<br>Yang harus dibayar : $hasil<br>";
             }
             echo "Sistem pembayaran : " . $this->jenis . "<br>";
 
@@ -102,16 +102,20 @@ if (isset($_POST['submit'])) {
                 $hasil2 = $hasil;
                 echo "Anda Tidak Mendapatkan Diskon";
             } else if ($this->jenis == "Banking") {
-                $hasil2 = $hasil - 0.025;
+                $hasil2 = (2.5 / 100) * $total;
+                $hasil3 = $total - $diskon - $hasil2;
                 echo "Mendapatkan diskon 2.5%";
             } else if ($this->jenis == "Gopay") {
-                $hasil2 = $hasil - 0.10;
-                echo "Mendapatkan Diskon 10%";
+                $hasil2 = (10 / 100) * $total;
+                $hasil3 = $total - $diskon - $hasil2;
+
+                echo "Mendapatkan Diskon 10% : " . $hasil2;
             } else {
-                $hasil2 = $hasil - 0.015;
+                $hasil2 = (1.1 / 100) * $total;
+                $hasil3 = $total - $diskon - $hasil2;
                 echo "Mendapatkan Diskon 1.5%";
             }
-            return "<br>Nominal : " . $hasil2;
+            return "<br>Nominal : " . $hasil3;
 
         }
     }
